@@ -1,17 +1,14 @@
-import { useNavigate } from 'react-router-dom';
-import style from './CardItem.module.css'
-
+import style from './DetailedSingleItem.module.css'
 
 const getPrice = (price, discount) => {
     return Math.round((price*100)/(100-discount));
  }
 
-export const CardItem = ({item}) =>{
-    const navigate = useNavigate();
+export const DetailedSingleItem = ({item}) =>{
 
     
     return(
-        <div className={style.card} onClick={()=>navigate(`/catalog/${item._id}`)}>
+        <div className={style.card}>
             <div className={style.additionalElementsWrapper}>
             
                 <p className={`${item.discount? `${style.discounttag}` :"" }`}>{item.discount>0 && -item.discount}{item.discount>0 && "%"}</p>

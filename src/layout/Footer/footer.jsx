@@ -1,8 +1,8 @@
-import header_logo_icon from '../assets/header_logo_icon.svg'
-import style from './footer.module.css'
-import telegram from '../assets/telegram.svg'
-import whatsapp from '../assets/whatsapp.svg'
-import vk from '../assets/vk.svg'
+import header_logo_icon from '../../assets/images/header_logo_icon.svg'
+import style from './Footer.module.css'
+import telegram from '../../assets/images/telegram.svg'
+import whatsapp from '../../assets/images/whatsapp.svg'
+import vk from '../../assets/images/vk.svg'
 
 export const Footer = () => {
     return (
