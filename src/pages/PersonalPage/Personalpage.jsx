@@ -15,7 +15,7 @@ export const PersonalPage = ()=>{
     useEffect(() => {
      const token = localStorage.getItem(AuthToken)
     if(!token){
-      navigate('/')
+      navigate('/authorize')
     }
     else{
       const fetchData = async ()=>{

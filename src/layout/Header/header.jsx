@@ -1,44 +1,69 @@
 import style from './Header.module.css'
-import header_logo_icon from '../../assets/images/header_logo_icon.svg'
-import favorite_item from '../../assets/images/favorite_item.svg'
-import account_icon from '../../assets/images/account_icon.svg'
-import basket_icon from '../../assets/images/basket_icon.svg'
-import menu from '../../assets/images/menu.png'
-import search_mobile from '../../assets/images/search_mobile.svg'
 import { useNavigate } from 'react-router-dom'
-import { NavLink } from "react-router-dom";
-import exit from '../../assets/images/exit.png'
 import { AuthToken } from "../../assets/constants/const";
+import Container from 'react-bootstrap/Container';
+import Nav from 'react-bootstrap/Nav';
+import Navbar from 'react-bootstrap/Navbar';
+import NavDropdown from 'react-bootstrap/NavDropdown';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import Form from 'react-bootstrap/Form';
+import Button from 'react-bootstrap/Button';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { fas } from '@fortawesome/free-solid-svg-icons';
+import { Collapse } from 'react-bootstrap';
+library.add(fas)
+
 
 export const Header = () => {
     const navigate = useNavigate();
-    const token = localStorage.getItem(AuthToken)
-
-    
+    const token = localStorage.getItem(AuthToken);   
    
   
-    return (<div className={style.header_main}>
-        
-        <div className={style.wrapper}>
-            <NavLink to="/about"><img src={header_logo_icon} alt="petshop" className={style.header_icon} /></NavLink>
-            <NavLink to="/about"className={style.header_logo} 
-            {...({isActive }) => (
-                <p className={isActive ? "active" : ""}>Tasks</p>
-              )}
-            >DogFood</NavLink>
-        </div>
-        <img src={search_mobile} alt="поиск" className={style.search_mobile} />
-        <form className={style.form}>
-            <input type="search" placeholder="Поиск по сайту" className={style.search}/>
-        </form>
-        <NavLink to='/favouriteItems'className={style.header_favorite}><img src={favorite_item} alt="избранное" className={style.header_favorite}/></NavLink>
-        <NavLink to='/basket' className={style.header_basket}><img src={basket_icon} alt="корзина" className={style.header_basket} /></NavLink>
-        <NavLink to='/personalPage' className={style.header_account}><img src={account_icon} alt="личный кабинет" className={style.header_account}/></NavLink>
-        <img src = {exit} className={`${token? `${style.exit}`: `${style.exitNotDisplayed}`}`} onClickCapture={()=>{
-            localStorage.clear() 
-            navigate('/')
-        }
-            }/>
-        <img src={menu} alt="меню" className={style.mobileMenu}/>
-        </div>)
+    return (
+    <Navbar collapseOnSelect expand="lg" className={style.header} fixed="top">
+      <Container fluid>
+
+        <Navbar.Brand href="/about" className='ms-5'> DogFood{'    '}
+          <FontAwesomeIcon icon="fa-solid fa-paw" size='sm' style={{color: "#545454",}}/>
+        </Navbar.Brand>
+
+        <Navbar.Toggle aria-controls="responsive-navbar-nav" className={style.toggle}/>
+          <Navbar.Collapse id="responsive-navbar-nav" className=''>
+
+            <Form className={style.search}>
+                  <Form.Control
+                    type="search"
+                    placeholder="Поиск"
+                    className="rounded-pill"
+                    aria-label="Search"
+                  />
+                  <Button variant="btn-outline">
+                    <FontAwesomeIcon icon="fa-solid fa-magnifying-glass" size='lg' style={{color: "#545454",}} className="me-4"/>
+                  </Button>
+              </Form>
+
+              <Nav className={style.icons}>
+                  <Nav.Link href="/basket">
+                    <FontAwesomeIcon icon="fa-solid fa-cart-shopping" size='xl' style={{color: "#545454",}} />
+                  </Nav.Link>
+                  <Nav.Link href="/favouriteItems">
+                    <FontAwesomeIcon icon="fa-solid fa-heart" size='xl' style={{color: "#545454",}} />
+                  </Nav.Link>
+                  <Nav.Link href="/personalPage">
+                    <FontAwesomeIcon icon="fa-solid fa-user" size='xl' style={{color: "#545454",}} />
+                  </Nav.Link>
+              </Nav>
+            
+            <FontAwesomeIcon icon="fa-solid fa-arrow-right-from-bracket" size='xl' style={{color: "#545454",}} 
+              className={`${token? `me-4`: `${style.exitNotDisplayed}`}`} 
+              onClickCapture={()=>{
+                localStorage.clear() 
+                navigate('/')}
+              }/>
+            
+         </Navbar.Collapse> 
+      </Container>
+    </Navbar>
+        )
 }

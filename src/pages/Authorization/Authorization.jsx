@@ -13,7 +13,7 @@ export const Authorization = ()=> {
     useEffect(() => {
         const token = localStorage.getItem(AuthToken)
         if(token){
-          navigate('/catalog')
+          navigate('/')
         }
     }, [navigate])
     
@@ -28,7 +28,7 @@ export const Authorization = ()=> {
         const responce = await res.json()   
         localStorage.setItem(AuthToken, responce.token)
         
-        return navigate('/catalog')
+        return navigate('/')
     }
 
     const authorizationSchema = object({
@@ -69,7 +69,7 @@ export const Authorization = ()=> {
         </Formik>
     
         <p>Еще не зарегестрированы?</p>
-        <NavLink to='/registration' className={style.p}><p>Зарегистрироваться</p></NavLink>
+        <NavLink to='registration' className={style.p}><p>Зарегистрироваться</p></NavLink>
         
     </div>
     </>

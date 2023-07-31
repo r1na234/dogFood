@@ -14,7 +14,13 @@ import { DetailedItem } from './pages/DetailedItem/Detaileditem';
 import { About } from './pages/About/About';
 import { FavoriteItems } from './pages/FavouriteItems/FavouriteItems';
 import { ItemsBasket } from './pages/ItemsBasket/ItemsBasket';
-
+import {
+  useQuery,
+  useMutation,
+  useQueryClient,
+  QueryClient,
+  QueryClientProvider,
+} from '@tanstack/react-query'
 
 
 const router = createBrowserRouter([
@@ -24,11 +30,12 @@ const router = createBrowserRouter([
     children: [
       {
         index: true,
-        element:<Authorization/>
-      },
-      {
-        path: "/catalog",
         element: <Main/>,
+      },
+      
+      {
+        path:"/authorize",
+        element:<Authorization/>
       },
       {
         path:"/personalPage",
@@ -51,7 +58,7 @@ const router = createBrowserRouter([
         element:<ItemsBasket/>
       },
       {
-        path:"/catalog/:Item",
+        path:"/:Item",
         element: <DetailedItem/>
       }
     ]
@@ -59,8 +66,10 @@ const router = createBrowserRouter([
   
 ]);
 
-
+const queryClient = new QueryClient()
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-  <RouterProvider router={router}/>
+  <QueryClientProvider client={queryClient}>
+    <RouterProvider router={router}/>
+  </QueryClientProvider>
 );

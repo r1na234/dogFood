@@ -11,7 +11,7 @@ export const CardItem = ({item}) =>{
 
     
     return(
-        <div className={style.card} onClick={()=>navigate(`/catalog/${item._id}`)}>
+        <div className={style.card} onClick={()=>navigate(`${item._id}`)}>
             <div className={style.additionalElementsWrapper}>
             
                 <p className={`${item.discount? `${style.discounttag}` :"" }`}>{item.discount>0 && -item.discount}{item.discount>0 && "%"}</p>

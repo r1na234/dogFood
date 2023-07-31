@@ -10,11 +10,9 @@ export const FavoriteItems = ()=>{
     useEffect(() => {
         const token = localStorage.getItem(AuthToken)
       if(!token){
-        navigate('/')
+        navigate('authorise')
       }
-      else{
     
-      }
     },[navigate])
     return (
         <div className={style.wrapper}>It`s favourite items page</div>

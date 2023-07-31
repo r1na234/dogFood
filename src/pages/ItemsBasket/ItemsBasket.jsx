@@ -8,7 +8,7 @@ export const ItemsBasket = () => {
     useEffect(() => {
         const token = localStorage.getItem(AuthToken)
       if(!token){
-        navigate('/')
+        navigate('authorize')
       }
       else{
     

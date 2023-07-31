@@ -3,7 +3,7 @@ import { getSingleItem } from "../../Api/Products/getSingleItemApi";
 import { useParams } from "react-router-dom";
 import style from './DetailedItem.module.css'
 import { DetailedSingleItem } from "../../components/DetailedSingleItem/DetailedSingleItem";
-import { AuthToken } from "../../assets/constants/const";
+import { AuthToken, TOKEN } from "../../assets/constants/const";
 
 export const DetailedItem =()=>{
     const params = useParams()
@@ -12,10 +12,10 @@ export const DetailedItem =()=>{
     const [item, setItem] =useState([])
 
     useEffect( () =>{
-        const token = localStorage.getItem(AuthToken)
+        // const token = localStorage.getItem(AuthToken)
         const cardId = params.Item
         const fetchData = async () => {
-            const res = await getSingleItem(cardId, token)
+            const res = await getSingleItem(cardId, TOKEN)
             const responce = await res.json()
 
             setItem(responce)

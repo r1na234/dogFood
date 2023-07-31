@@ -100,9 +100,9 @@
 
 .mobile_footer{
     width: 100%;
-    position: relative;
-	margin-top: -35vh;
-	height: 35vh;
+    position: fixed;
+	
+	height: 20vh;
     bottom: 0;
     background-color: rgb(255, 228, 73);
     display: flex;
@@ -112,12 +112,13 @@
 }
 
 .mobile_contacts{
+    margin-top: 0.5rem;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin-bottom: 100px;
-    
+    /* margin-bottom: 100px;
+     */
 }
 
 .mobfooter_links{
@@ -127,13 +128,13 @@
 }
 
 .mobh{
-    margin-bottom: 1vh;
+    margin-bottom: 0.5vh;
 
 }
 
 .moblink{
     text-decoration: none;
-    color: #213053;
+    color: #2d313a;
     margin-top: 1vh;    
     font-size: 15px;
 
@@ -142,7 +143,7 @@
 .mobicong{
     display: flex;
     justify-content: center;
-    margin-top: 3vh;
+    /* margin-top: 3vh; */
     margin-left: 5vw;
 }
 
