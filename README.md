@@ -7,4 +7,10 @@
 * CSS3
 * HTML5
 
+## How it works ?
+* Sign in / Sign up functions
+* Different access for different authorization status
+* Receiving data from backend using Fetch
+* Routing via react-router-dom
+
 
